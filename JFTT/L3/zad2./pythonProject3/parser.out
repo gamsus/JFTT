@@ -1,0 +1,687 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> STAR
+Rule 1     STAR -> EXPR
+Rule 2     STAR -> COM
+Rule 3     EXPR -> EXPR PLUS EXPR
+Rule 4     EXPR -> EXPR MINUS EXPR
+Rule 5     EXPR -> MINUS EXPR
+Rule 6     EXPR -> EXPR TIMES EXPR
+Rule 7     EXPR -> EXPR DIV EXPR
+Rule 8     EXPR -> EXPR POW EXP
+Rule 9     EXPONUMR -> NUMBER
+Rule 10    EXP -> MINUS EXP
+Rule 11    EXP -> EXP PLUS EXP
+Rule 12    EXP -> EXP MINUS EXP
+Rule 13    EXP -> EXP TIMES EXP
+Rule 14    EXP -> EXP DIV EXP
+Rule 15    EXP -> LPAREN EXP RPAREN
+Rule 16    EXP -> EXPONUMR
+Rule 17    EXPR -> NUMBER
+Rule 18    EXPR -> LPAREN EXPR RPAREN
+
+Terminals, with rules where they appear
+
+COM                  : 2
+DIV                  : 7 14
+LPAREN               : 15 18
+MINUS                : 4 5 10 12
+NUMBER               : 9 17
+PLUS                 : 3 11
+POW                  : 8
+RPAREN               : 15 18
+TIMES                : 6 13
+error                : 
+
+Nonterminals, with rules where they appear
+
+EXP                  : 8 10 11 11 12 12 13 13 14 14 15
+EXPONUMR             : 16
+EXPR                 : 1 3 3 4 4 5 6 6 7 7 8 18
+STAR                 : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . STAR
+    (1) STAR -> . EXPR
+    (2) STAR -> . COM
+    (3) EXPR -> . EXPR PLUS EXPR
+    (4) EXPR -> . EXPR MINUS EXPR
+    (5) EXPR -> . MINUS EXPR
+    (6) EXPR -> . EXPR TIMES EXPR
+    (7) EXPR -> . EXPR DIV EXPR
+    (8) EXPR -> . EXPR POW EXP
+    (17) EXPR -> . NUMBER
+    (18) EXPR -> . LPAREN EXPR RPAREN
+
+    COM             shift and go to state 3
+    MINUS           shift and go to state 4
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    STAR                           shift and go to state 1
+    EXPR                           shift and go to state 2
+
+state 1
+
+    (0) S' -> STAR .
+
+
+
+state 2
+
+    (1) STAR -> EXPR .
+    (3) EXPR -> EXPR . PLUS EXPR
+    (4) EXPR -> EXPR . MINUS EXPR
+    (6) EXPR -> EXPR . TIMES EXPR
+    (7) EXPR -> EXPR . DIV EXPR
+    (8) EXPR -> EXPR . POW EXP
+
+    $end            reduce using rule 1 (STAR -> EXPR .)
+    PLUS            shift and go to state 7
+    MINUS           shift and go to state 8
+    TIMES           shift and go to state 9
+    DIV             shift and go to state 10
+    POW             shift and go to state 11
+
+
+state 3
+
+    (2) STAR -> COM .
+
+    $end            reduce using rule 2 (STAR -> COM .)
+
+
+state 4
+
+    (5) EXPR -> MINUS . EXPR
+    (3) EXPR -> . EXPR PLUS EXPR
+    (4) EXPR -> . EXPR MINUS EXPR
+    (5) EXPR -> . MINUS EXPR
+    (6) EXPR -> . EXPR TIMES EXPR
+    (7) EXPR -> . EXPR DIV EXPR
+    (8) EXPR -> . EXPR POW EXP
+    (17) EXPR -> . NUMBER
+    (18) EXPR -> . LPAREN EXPR RPAREN
+
+    MINUS           shift and go to state 4
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    EXPR                           shift and go to state 12
+
+state 5
+
+    (17) EXPR -> NUMBER .
+
+    PLUS            reduce using rule 17 (EXPR -> NUMBER .)
+    MINUS           reduce using rule 17 (EXPR -> NUMBER .)
+    TIMES           reduce using rule 17 (EXPR -> NUMBER .)
+    DIV             reduce using rule 17 (EXPR -> NUMBER .)
+    POW             reduce using rule 17 (EXPR -> NUMBER .)
+    $end            reduce using rule 17 (EXPR -> NUMBER .)
+    RPAREN          reduce using rule 17 (EXPR -> NUMBER .)
+
+
+state 6
+
+    (18) EXPR -> LPAREN . EXPR RPAREN
+    (3) EXPR -> . EXPR PLUS EXPR
+    (4) EXPR -> . EXPR MINUS EXPR
+    (5) EXPR -> . MINUS EXPR
+    (6) EXPR -> . EXPR TIMES EXPR
+    (7) EXPR -> . EXPR DIV EXPR
+    (8) EXPR -> . EXPR POW EXP
+    (17) EXPR -> . NUMBER
+    (18) EXPR -> . LPAREN EXPR RPAREN
+
+    MINUS           shift and go to state 4
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    EXPR                           shift and go to state 13
+
+state 7
+
+    (3) EXPR -> EXPR PLUS . EXPR
+    (3) EXPR -> . EXPR PLUS EXPR
+    (4) EXPR -> . EXPR MINUS EXPR
+    (5) EXPR -> . MINUS EXPR
+    (6) EXPR -> . EXPR TIMES EXPR
+    (7) EXPR -> . EXPR DIV EXPR
+    (8) EXPR -> . EXPR POW EXP
+    (17) EXPR -> . NUMBER
+    (18) EXPR -> . LPAREN EXPR RPAREN
+
+    MINUS           shift and go to state 4
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    EXPR                           shift and go to state 14
+
+state 8
+
+    (4) EXPR -> EXPR MINUS . EXPR
+    (3) EXPR -> . EXPR PLUS EXPR
+    (4) EXPR -> . EXPR MINUS EXPR
+    (5) EXPR -> . MINUS EXPR
+    (6) EXPR -> . EXPR TIMES EXPR
+    (7) EXPR -> . EXPR DIV EXPR
+    (8) EXPR -> . EXPR POW EXP
+    (17) EXPR -> . NUMBER
+    (18) EXPR -> . LPAREN EXPR RPAREN
+
+    MINUS           shift and go to state 4
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    EXPR                           shift and go to state 15
+
+state 9
+
+    (6) EXPR -> EXPR TIMES . EXPR
+    (3) EXPR -> . EXPR PLUS EXPR
+    (4) EXPR -> . EXPR MINUS EXPR
+    (5) EXPR -> . MINUS EXPR
+    (6) EXPR -> . EXPR TIMES EXPR
+    (7) EXPR -> . EXPR DIV EXPR
+    (8) EXPR -> . EXPR POW EXP
+    (17) EXPR -> . NUMBER
+    (18) EXPR -> . LPAREN EXPR RPAREN
+
+    MINUS           shift and go to state 4
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    EXPR                           shift and go to state 16
+
+state 10
+
+    (7) EXPR -> EXPR DIV . EXPR
+    (3) EXPR -> . EXPR PLUS EXPR
+    (4) EXPR -> . EXPR MINUS EXPR
+    (5) EXPR -> . MINUS EXPR
+    (6) EXPR -> . EXPR TIMES EXPR
+    (7) EXPR -> . EXPR DIV EXPR
+    (8) EXPR -> . EXPR POW EXP
+    (17) EXPR -> . NUMBER
+    (18) EXPR -> . LPAREN EXPR RPAREN
+
+    MINUS           shift and go to state 4
+    NUMBER          shift and go to state 5
+    LPAREN          shift and go to state 6
+
+    EXPR                           shift and go to state 17
+
+state 11
+
+    (8) EXPR -> EXPR POW . EXP
+    (10) EXP -> . MINUS EXP
+    (11) EXP -> . EXP PLUS EXP
+    (12) EXP -> . EXP MINUS EXP
+    (13) EXP -> . EXP TIMES EXP
+    (14) EXP -> . EXP DIV EXP
+    (15) EXP -> . LPAREN EXP RPAREN
+    (16) EXP -> . EXPONUMR
+    (9) EXPONUMR -> . NUMBER
+
+    MINUS           shift and go to state 19
+    LPAREN          shift and go to state 20
+    NUMBER          shift and go to state 22
+
+    EXP                            shift and go to state 18
+    EXPONUMR                       shift and go to state 21
+
+state 12
+
+    (5) EXPR -> MINUS EXPR .
+    (3) EXPR -> EXPR . PLUS EXPR
+    (4) EXPR -> EXPR . MINUS EXPR
+    (6) EXPR -> EXPR . TIMES EXPR
+    (7) EXPR -> EXPR . DIV EXPR
+    (8) EXPR -> EXPR . POW EXP
+
+    PLUS            reduce using rule 5 (EXPR -> MINUS EXPR .)
+    MINUS           reduce using rule 5 (EXPR -> MINUS EXPR .)
+    TIMES           reduce using rule 5 (EXPR -> MINUS EXPR .)
+    DIV             reduce using rule 5 (EXPR -> MINUS EXPR .)
+    $end            reduce using rule 5 (EXPR -> MINUS EXPR .)
+    RPAREN          reduce using rule 5 (EXPR -> MINUS EXPR .)
+    POW             shift and go to state 11
+
+  ! POW             [ reduce using rule 5 (EXPR -> MINUS EXPR .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! TIMES           [ shift and go to state 9 ]
+  ! DIV             [ shift and go to state 10 ]
+
+
+state 13
+
+    (18) EXPR -> LPAREN EXPR . RPAREN
+    (3) EXPR -> EXPR . PLUS EXPR
+    (4) EXPR -> EXPR . MINUS EXPR
+    (6) EXPR -> EXPR . TIMES EXPR
+    (7) EXPR -> EXPR . DIV EXPR
+    (8) EXPR -> EXPR . POW EXP
+
+    RPAREN          shift and go to state 23
+    PLUS            shift and go to state 7
+    MINUS           shift and go to state 8
+    TIMES           shift and go to state 9
+    DIV             shift and go to state 10
+    POW             shift and go to state 11
+
+
+state 14
+
+    (3) EXPR -> EXPR PLUS EXPR .
+    (3) EXPR -> EXPR . PLUS EXPR
+    (4) EXPR -> EXPR . MINUS EXPR
+    (6) EXPR -> EXPR . TIMES EXPR
+    (7) EXPR -> EXPR . DIV EXPR
+    (8) EXPR -> EXPR . POW EXP
+
+    PLUS            reduce using rule 3 (EXPR -> EXPR PLUS EXPR .)
+    MINUS           reduce using rule 3 (EXPR -> EXPR PLUS EXPR .)
+    $end            reduce using rule 3 (EXPR -> EXPR PLUS EXPR .)
+    RPAREN          reduce using rule 3 (EXPR -> EXPR PLUS EXPR .)
+    TIMES           shift and go to state 9
+    DIV             shift and go to state 10
+    POW             shift and go to state 11
+
+  ! TIMES           [ reduce using rule 3 (EXPR -> EXPR PLUS EXPR .) ]
+  ! DIV             [ reduce using rule 3 (EXPR -> EXPR PLUS EXPR .) ]
+  ! POW             [ reduce using rule 3 (EXPR -> EXPR PLUS EXPR .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+
+
+state 15
+
+    (4) EXPR -> EXPR MINUS EXPR .
+    (3) EXPR -> EXPR . PLUS EXPR
+    (4) EXPR -> EXPR . MINUS EXPR
+    (6) EXPR -> EXPR . TIMES EXPR
+    (7) EXPR -> EXPR . DIV EXPR
+    (8) EXPR -> EXPR . POW EXP
+
+    PLUS            reduce using rule 4 (EXPR -> EXPR MINUS EXPR .)
+    MINUS           reduce using rule 4 (EXPR -> EXPR MINUS EXPR .)
+    $end            reduce using rule 4 (EXPR -> EXPR MINUS EXPR .)
+    RPAREN          reduce using rule 4 (EXPR -> EXPR MINUS EXPR .)
+    TIMES           shift and go to state 9
+    DIV             shift and go to state 10
+    POW             shift and go to state 11
+
+  ! TIMES           [ reduce using rule 4 (EXPR -> EXPR MINUS EXPR .) ]
+  ! DIV             [ reduce using rule 4 (EXPR -> EXPR MINUS EXPR .) ]
+  ! POW             [ reduce using rule 4 (EXPR -> EXPR MINUS EXPR .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+
+
+state 16
+
+    (6) EXPR -> EXPR TIMES EXPR .
+    (3) EXPR -> EXPR . PLUS EXPR
+    (4) EXPR -> EXPR . MINUS EXPR
+    (6) EXPR -> EXPR . TIMES EXPR
+    (7) EXPR -> EXPR . DIV EXPR
+    (8) EXPR -> EXPR . POW EXP
+
+    PLUS            reduce using rule 6 (EXPR -> EXPR TIMES EXPR .)
+    MINUS           reduce using rule 6 (EXPR -> EXPR TIMES EXPR .)
+    TIMES           reduce using rule 6 (EXPR -> EXPR TIMES EXPR .)
+    DIV             reduce using rule 6 (EXPR -> EXPR TIMES EXPR .)
+    $end            reduce using rule 6 (EXPR -> EXPR TIMES EXPR .)
+    RPAREN          reduce using rule 6 (EXPR -> EXPR TIMES EXPR .)
+    POW             shift and go to state 11
+
+  ! POW             [ reduce using rule 6 (EXPR -> EXPR TIMES EXPR .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! TIMES           [ shift and go to state 9 ]
+  ! DIV             [ shift and go to state 10 ]
+
+
+state 17
+
+    (7) EXPR -> EXPR DIV EXPR .
+    (3) EXPR -> EXPR . PLUS EXPR
+    (4) EXPR -> EXPR . MINUS EXPR
+    (6) EXPR -> EXPR . TIMES EXPR
+    (7) EXPR -> EXPR . DIV EXPR
+    (8) EXPR -> EXPR . POW EXP
+
+    PLUS            reduce using rule 7 (EXPR -> EXPR DIV EXPR .)
+    MINUS           reduce using rule 7 (EXPR -> EXPR DIV EXPR .)
+    TIMES           reduce using rule 7 (EXPR -> EXPR DIV EXPR .)
+    DIV             reduce using rule 7 (EXPR -> EXPR DIV EXPR .)
+    $end            reduce using rule 7 (EXPR -> EXPR DIV EXPR .)
+    RPAREN          reduce using rule 7 (EXPR -> EXPR DIV EXPR .)
+    POW             shift and go to state 11
+
+  ! POW             [ reduce using rule 7 (EXPR -> EXPR DIV EXPR .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! TIMES           [ shift and go to state 9 ]
+  ! DIV             [ shift and go to state 10 ]
+
+
+state 18
+
+    (8) EXPR -> EXPR POW EXP .
+    (11) EXP -> EXP . PLUS EXP
+    (12) EXP -> EXP . MINUS EXP
+    (13) EXP -> EXP . TIMES EXP
+    (14) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 8 (EXPR -> EXPR POW EXP .)
+    MINUS           reduce using rule 8 (EXPR -> EXPR POW EXP .)
+    TIMES           reduce using rule 8 (EXPR -> EXPR POW EXP .)
+    DIV             reduce using rule 8 (EXPR -> EXPR POW EXP .)
+    POW             reduce using rule 8 (EXPR -> EXPR POW EXP .)
+    $end            reduce using rule 8 (EXPR -> EXPR POW EXP .)
+    RPAREN          reduce using rule 8 (EXPR -> EXPR POW EXP .)
+
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 26 ]
+  ! DIV             [ shift and go to state 27 ]
+
+
+state 19
+
+    (10) EXP -> MINUS . EXP
+    (10) EXP -> . MINUS EXP
+    (11) EXP -> . EXP PLUS EXP
+    (12) EXP -> . EXP MINUS EXP
+    (13) EXP -> . EXP TIMES EXP
+    (14) EXP -> . EXP DIV EXP
+    (15) EXP -> . LPAREN EXP RPAREN
+    (16) EXP -> . EXPONUMR
+    (9) EXPONUMR -> . NUMBER
+
+    MINUS           shift and go to state 19
+    LPAREN          shift and go to state 20
+    NUMBER          shift and go to state 22
+
+    EXP                            shift and go to state 28
+    EXPONUMR                       shift and go to state 21
+
+state 20
+
+    (15) EXP -> LPAREN . EXP RPAREN
+    (10) EXP -> . MINUS EXP
+    (11) EXP -> . EXP PLUS EXP
+    (12) EXP -> . EXP MINUS EXP
+    (13) EXP -> . EXP TIMES EXP
+    (14) EXP -> . EXP DIV EXP
+    (15) EXP -> . LPAREN EXP RPAREN
+    (16) EXP -> . EXPONUMR
+    (9) EXPONUMR -> . NUMBER
+
+    MINUS           shift and go to state 19
+    LPAREN          shift and go to state 20
+    NUMBER          shift and go to state 22
+
+    EXP                            shift and go to state 29
+    EXPONUMR                       shift and go to state 21
+
+state 21
+
+    (16) EXP -> EXPONUMR .
+
+    PLUS            reduce using rule 16 (EXP -> EXPONUMR .)
+    MINUS           reduce using rule 16 (EXP -> EXPONUMR .)
+    TIMES           reduce using rule 16 (EXP -> EXPONUMR .)
+    DIV             reduce using rule 16 (EXP -> EXPONUMR .)
+    POW             reduce using rule 16 (EXP -> EXPONUMR .)
+    $end            reduce using rule 16 (EXP -> EXPONUMR .)
+    RPAREN          reduce using rule 16 (EXP -> EXPONUMR .)
+
+
+state 22
+
+    (9) EXPONUMR -> NUMBER .
+
+    PLUS            reduce using rule 9 (EXPONUMR -> NUMBER .)
+    MINUS           reduce using rule 9 (EXPONUMR -> NUMBER .)
+    TIMES           reduce using rule 9 (EXPONUMR -> NUMBER .)
+    DIV             reduce using rule 9 (EXPONUMR -> NUMBER .)
+    POW             reduce using rule 9 (EXPONUMR -> NUMBER .)
+    $end            reduce using rule 9 (EXPONUMR -> NUMBER .)
+    RPAREN          reduce using rule 9 (EXPONUMR -> NUMBER .)
+
+
+state 23
+
+    (18) EXPR -> LPAREN EXPR RPAREN .
+
+    PLUS            reduce using rule 18 (EXPR -> LPAREN EXPR RPAREN .)
+    MINUS           reduce using rule 18 (EXPR -> LPAREN EXPR RPAREN .)
+    TIMES           reduce using rule 18 (EXPR -> LPAREN EXPR RPAREN .)
+    DIV             reduce using rule 18 (EXPR -> LPAREN EXPR RPAREN .)
+    POW             reduce using rule 18 (EXPR -> LPAREN EXPR RPAREN .)
+    $end            reduce using rule 18 (EXPR -> LPAREN EXPR RPAREN .)
+    RPAREN          reduce using rule 18 (EXPR -> LPAREN EXPR RPAREN .)
+
+
+state 24
+
+    (11) EXP -> EXP PLUS . EXP
+    (10) EXP -> . MINUS EXP
+    (11) EXP -> . EXP PLUS EXP
+    (12) EXP -> . EXP MINUS EXP
+    (13) EXP -> . EXP TIMES EXP
+    (14) EXP -> . EXP DIV EXP
+    (15) EXP -> . LPAREN EXP RPAREN
+    (16) EXP -> . EXPONUMR
+    (9) EXPONUMR -> . NUMBER
+
+    MINUS           shift and go to state 19
+    LPAREN          shift and go to state 20
+    NUMBER          shift and go to state 22
+
+    EXP                            shift and go to state 30
+    EXPONUMR                       shift and go to state 21
+
+state 25
+
+    (12) EXP -> EXP MINUS . EXP
+    (10) EXP -> . MINUS EXP
+    (11) EXP -> . EXP PLUS EXP
+    (12) EXP -> . EXP MINUS EXP
+    (13) EXP -> . EXP TIMES EXP
+    (14) EXP -> . EXP DIV EXP
+    (15) EXP -> . LPAREN EXP RPAREN
+    (16) EXP -> . EXPONUMR
+    (9) EXPONUMR -> . NUMBER
+
+    MINUS           shift and go to state 19
+    LPAREN          shift and go to state 20
+    NUMBER          shift and go to state 22
+
+    EXP                            shift and go to state 31
+    EXPONUMR                       shift and go to state 21
+
+state 26
+
+    (13) EXP -> EXP TIMES . EXP
+    (10) EXP -> . MINUS EXP
+    (11) EXP -> . EXP PLUS EXP
+    (12) EXP -> . EXP MINUS EXP
+    (13) EXP -> . EXP TIMES EXP
+    (14) EXP -> . EXP DIV EXP
+    (15) EXP -> . LPAREN EXP RPAREN
+    (16) EXP -> . EXPONUMR
+    (9) EXPONUMR -> . NUMBER
+
+    MINUS           shift and go to state 19
+    LPAREN          shift and go to state 20
+    NUMBER          shift and go to state 22
+
+    EXP                            shift and go to state 32
+    EXPONUMR                       shift and go to state 21
+
+state 27
+
+    (14) EXP -> EXP DIV . EXP
+    (10) EXP -> . MINUS EXP
+    (11) EXP -> . EXP PLUS EXP
+    (12) EXP -> . EXP MINUS EXP
+    (13) EXP -> . EXP TIMES EXP
+    (14) EXP -> . EXP DIV EXP
+    (15) EXP -> . LPAREN EXP RPAREN
+    (16) EXP -> . EXPONUMR
+    (9) EXPONUMR -> . NUMBER
+
+    MINUS           shift and go to state 19
+    LPAREN          shift and go to state 20
+    NUMBER          shift and go to state 22
+
+    EXP                            shift and go to state 33
+    EXPONUMR                       shift and go to state 21
+
+state 28
+
+    (10) EXP -> MINUS EXP .
+    (11) EXP -> EXP . PLUS EXP
+    (12) EXP -> EXP . MINUS EXP
+    (13) EXP -> EXP . TIMES EXP
+    (14) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 10 (EXP -> MINUS EXP .)
+    MINUS           reduce using rule 10 (EXP -> MINUS EXP .)
+    TIMES           reduce using rule 10 (EXP -> MINUS EXP .)
+    DIV             reduce using rule 10 (EXP -> MINUS EXP .)
+    POW             reduce using rule 10 (EXP -> MINUS EXP .)
+    $end            reduce using rule 10 (EXP -> MINUS EXP .)
+    RPAREN          reduce using rule 10 (EXP -> MINUS EXP .)
+
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 26 ]
+  ! DIV             [ shift and go to state 27 ]
+
+
+state 29
+
+    (15) EXP -> LPAREN EXP . RPAREN
+    (11) EXP -> EXP . PLUS EXP
+    (12) EXP -> EXP . MINUS EXP
+    (13) EXP -> EXP . TIMES EXP
+    (14) EXP -> EXP . DIV EXP
+
+    RPAREN          shift and go to state 34
+    PLUS            shift and go to state 24
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 26
+    DIV             shift and go to state 27
+
+
+state 30
+
+    (11) EXP -> EXP PLUS EXP .
+    (11) EXP -> EXP . PLUS EXP
+    (12) EXP -> EXP . MINUS EXP
+    (13) EXP -> EXP . TIMES EXP
+    (14) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 11 (EXP -> EXP PLUS EXP .)
+    MINUS           reduce using rule 11 (EXP -> EXP PLUS EXP .)
+    POW             reduce using rule 11 (EXP -> EXP PLUS EXP .)
+    $end            reduce using rule 11 (EXP -> EXP PLUS EXP .)
+    RPAREN          reduce using rule 11 (EXP -> EXP PLUS EXP .)
+    TIMES           shift and go to state 26
+    DIV             shift and go to state 27
+
+  ! TIMES           [ reduce using rule 11 (EXP -> EXP PLUS EXP .) ]
+  ! DIV             [ reduce using rule 11 (EXP -> EXP PLUS EXP .) ]
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+
+
+state 31
+
+    (12) EXP -> EXP MINUS EXP .
+    (11) EXP -> EXP . PLUS EXP
+    (12) EXP -> EXP . MINUS EXP
+    (13) EXP -> EXP . TIMES EXP
+    (14) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 12 (EXP -> EXP MINUS EXP .)
+    MINUS           reduce using rule 12 (EXP -> EXP MINUS EXP .)
+    POW             reduce using rule 12 (EXP -> EXP MINUS EXP .)
+    $end            reduce using rule 12 (EXP -> EXP MINUS EXP .)
+    RPAREN          reduce using rule 12 (EXP -> EXP MINUS EXP .)
+    TIMES           shift and go to state 26
+    DIV             shift and go to state 27
+
+  ! TIMES           [ reduce using rule 12 (EXP -> EXP MINUS EXP .) ]
+  ! DIV             [ reduce using rule 12 (EXP -> EXP MINUS EXP .) ]
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+
+
+state 32
+
+    (13) EXP -> EXP TIMES EXP .
+    (11) EXP -> EXP . PLUS EXP
+    (12) EXP -> EXP . MINUS EXP
+    (13) EXP -> EXP . TIMES EXP
+    (14) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 13 (EXP -> EXP TIMES EXP .)
+    MINUS           reduce using rule 13 (EXP -> EXP TIMES EXP .)
+    TIMES           reduce using rule 13 (EXP -> EXP TIMES EXP .)
+    DIV             reduce using rule 13 (EXP -> EXP TIMES EXP .)
+    POW             reduce using rule 13 (EXP -> EXP TIMES EXP .)
+    $end            reduce using rule 13 (EXP -> EXP TIMES EXP .)
+    RPAREN          reduce using rule 13 (EXP -> EXP TIMES EXP .)
+
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 26 ]
+  ! DIV             [ shift and go to state 27 ]
+
+
+state 33
+
+    (14) EXP -> EXP DIV EXP .
+    (11) EXP -> EXP . PLUS EXP
+    (12) EXP -> EXP . MINUS EXP
+    (13) EXP -> EXP . TIMES EXP
+    (14) EXP -> EXP . DIV EXP
+
+    PLUS            reduce using rule 14 (EXP -> EXP DIV EXP .)
+    MINUS           reduce using rule 14 (EXP -> EXP DIV EXP .)
+    TIMES           reduce using rule 14 (EXP -> EXP DIV EXP .)
+    DIV             reduce using rule 14 (EXP -> EXP DIV EXP .)
+    POW             reduce using rule 14 (EXP -> EXP DIV EXP .)
+    $end            reduce using rule 14 (EXP -> EXP DIV EXP .)
+    RPAREN          reduce using rule 14 (EXP -> EXP DIV EXP .)
+
+  ! PLUS            [ shift and go to state 24 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 26 ]
+  ! DIV             [ shift and go to state 27 ]
+
+
+state 34
+
+    (15) EXP -> LPAREN EXP RPAREN .
+
+    PLUS            reduce using rule 15 (EXP -> LPAREN EXP RPAREN .)
+    MINUS           reduce using rule 15 (EXP -> LPAREN EXP RPAREN .)
+    TIMES           reduce using rule 15 (EXP -> LPAREN EXP RPAREN .)
+    DIV             reduce using rule 15 (EXP -> LPAREN EXP RPAREN .)
+    POW             reduce using rule 15 (EXP -> LPAREN EXP RPAREN .)
+    $end            reduce using rule 15 (EXP -> LPAREN EXP RPAREN .)
+    RPAREN          reduce using rule 15 (EXP -> LPAREN EXP RPAREN .)
+
